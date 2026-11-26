@@ -40,4 +40,4 @@ Selecciona **Boyacá**. Las ventas netas deben mostrar **$13.000.000** y el rank
 
 El tablero está construido con Next.js, React, JavaScript y CSS Modules. La página principal se encuentra en `app/page.js` y sus estilos en `app/page.module.css`.
 
-- [Bitácora de desarrollo por fecha](docs/dashboard-progress.md)
+- [Bitácora de desarrollo por fecha](docs/bitacora_desarrollo_ceiba.md)
