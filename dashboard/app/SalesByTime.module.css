@@ -1,0 +1,150 @@
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin: 0.75rem 0;
+}
+
+.controls label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.controls select {
+  min-height: 2.6rem;
+  min-width: 10rem;
+  max-width: 100%;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  background: rgb(234 240 247 / 85%);
+  box-shadow:
+    0 0 0 1px rgb(15 41 66 / 10%),
+    0 6px 16px -10px rgb(15 41 66 / 30%);
+  color: var(--navy);
+  font: inherit;
+  font-weight: 500;
+}
+
+.controls select:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.peakSummary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  margin: 0 0 0.75rem;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid rgb(255 255 255 / 92%);
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #ffffff 0%, #e9f2ff 100%);
+  box-shadow:
+    0 0 0 1px rgb(15 41 66 / 6%),
+    0 8px 20px -14px rgb(15 41 66 / 30%);
+  color: var(--navy);
+  font-size: 0.95rem;
+}
+
+.peakSummary strong {
+  font-family: var(--font-title);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0.2rem;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.matrix caption {
+  padding: 0 0 0.5rem;
+  color: var(--muted);
+  text-align: left;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.matrix th,
+.matrix td {
+  padding: 0.45rem 0.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.matrix thead th {
+  background: #edf2f8;
+  color: #36516c;
+  font-weight: 600;
+}
+
+.matrix th:first-child {
+  text-align: left;
+}
+
+.matrix tbody th {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.emptyCell {
+  background: #f5f7fa;
+  color: #65768a;
+}
+
+.lowCell {
+  background: #e1edfb;
+  color: #193854;
+}
+
+.mediumCell {
+  background: #b7d2f0;
+  color: #133455;
+}
+
+.peakCell {
+  background: linear-gradient(135deg, #1f5a95, #194c80);
+  box-shadow: 0 3px 8px -3px rgb(25 76 128 / 55%);
+  color: white;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .controls label {
+    flex: 1 1 8rem;
+    min-width: 0;
+  }
+
+  .controls select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .matrix th,
+  .matrix td {
+    padding: 0.4rem 0.3rem;
+    font-size: 0.85rem;
+  }
+}
+@media (hover: hover) {
+  .matrix td {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .matrix td:hover {
+    position: relative;
+    transform: scale(1.08);
+    box-shadow: 0 6px 14px -6px rgb(15 41 66 / 45%);
+  }
+}

@@ -5,6 +5,9 @@ import PaymentsByMethod from "./PaymentsByMethod";
 import SalesByChannel from "./SalesByChannel";
 import SalesMap from "./SalesMap";
 import SalesTargets from "./SalesTargets";
+import ProductSales from "./ProductSales";
+import SalesByTime from "./SalesByTime";
+import OpenStores from "./OpenStores";
 import styles from "./page.module.css";
 
 const stores = [
@@ -261,6 +264,13 @@ export default function SalesDashboardPage() {
         <div className={styles.salesMixGrid}>
           <SalesByChannel stores={filteredStores} />
           <PaymentsByMethod stores={filteredStores} />
+        </div>
+
+        <ProductSales stores={filteredStores} />
+
+        <div className={styles.detailGrid}>
+          <SalesByTime key={selectedDepartment} stores={filteredStores} />
+          <OpenStores stores={filteredStores} />
         </div>
 
         <footer className={styles.footer}>Cifras de ejemplo · Ceiba</footer>

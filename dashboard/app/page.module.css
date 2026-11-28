@@ -8,13 +8,19 @@
   --border: #d6e0ea;
   --rail: #dce5f0;
   --surface: #ffffff;
-  --gap: clamp(0.85rem, 1.5vw, 1.35rem);
-  --panel-padding: clamp(1rem, 1.65vw, 1.5rem);
+  --gap: clamp(0.7rem, 1vw, 0.95rem);
+  --panel-padding: clamp(0.9rem, 1.2vw, 1.15rem);
+  --radius-card: 1.35rem;
   --panel-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  --font-title: var(--font-display, "Plus Jakarta Sans"), -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 
   width: 100%;
   min-height: 100vh;
-  background: #f5f7fb;
+  background:
+    radial-gradient(50rem 26rem at 0% 0%, #e3edff 0%, transparent 62%),
+    radial-gradient(44rem 24rem at 100% 8%, #e6f5ef 0%, transparent 60%),
+    #f5f7fb;
   color: var(--text);
   color-scheme: light;
   font-variant-numeric: tabular-nums;
@@ -35,7 +41,7 @@
   width: 100%;
   max-width: 84rem;
   margin-inline: auto;
-  padding: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(0.85rem, 1.6vw, 1.4rem) clamp(0.85rem, 2vw, 1.75rem);
 }
 
 /* Brand and department filter */
@@ -46,7 +52,7 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 1rem 2rem;
-  padding-bottom: 1.1rem;
+  padding-block: 0.15rem 0.7rem;
   border-bottom: 1px solid var(--border);
 }
 
@@ -73,10 +79,11 @@
 }
 
 .header h1 {
-  margin: 0.5rem 0 0;
+  margin: 0.3rem 0 0;
   color: var(--navy);
+  font-family: var(--font-title);
   font-size: clamp(1.65rem, 3vw, 2.2rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.035em;
 }
@@ -101,10 +108,14 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.2rem;
-  padding: 0.23rem;
-  border: 1px solid var(--border);
-  border-radius: 0.7rem;
-  background: #eaf0f7;
+  padding: 0.25rem;
+  border: 1px solid rgb(255 255 255 / 85%);
+  border-radius: 999px;
+  background: rgb(234 240 247 / 85%);
+  box-shadow:
+    0 0 0 1px rgb(15 41 66 / 6%),
+    0 6px 16px -10px rgb(15 41 66 / 30%);
+  backdrop-filter: blur(8px);
 }
 
 .filterOption {
@@ -126,12 +137,15 @@
 .filterOption span {
   display: grid;
   min-height: 2.5rem;
-  padding: 0.4rem 0.85rem;
+  padding: 0.4rem 1rem;
   place-items: center;
-  border-radius: 0.48rem;
+  border-radius: 999px;
   color: #344d68;
   font-size: 0.9rem;
   font-weight: 600;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 .filterOption:hover span {
@@ -139,9 +153,9 @@
 }
 
 .filterOption input:checked + span {
-  background: var(--blue-dark);
+  background: linear-gradient(135deg, #1f66d6, var(--blue-dark));
   color: white;
-  box-shadow: 0 2px 5px rgb(15 41 66 / 16%);
+  box-shadow: 0 3px 8px rgb(19 73 152 / 30%);
 }
 
 .filterOption input:focus-visible + span,
@@ -161,40 +175,57 @@
 .kpiCard,
 .panel {
   min-width: 0;
-  border: 1px solid var(--border);
-  border-radius: 0.85rem;
-  background: var(--surface);
+  border: 1.5px solid rgb(255 255 255 / 92%);
+  border-radius: var(--radius-card);
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9fd 100%);
 }
 
 .kpiCard {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: clamp(0.9rem, 1.5vw, 1.25rem);
+  padding: 0.8rem 1rem;
   box-shadow:
-    inset 0 1px 0 white,
-    0 2px 3px rgb(15 41 66 / 5%),
-    0 7px 14px -8px rgb(15 41 66 / 28%);
+    0 0 0 1px rgb(15 41 66 / 6%),
+    0 10px 24px -16px rgb(15 41 66 / 32%);
 }
 
-.primaryKpi {
+/* Soft tints, one per indicator, like the mosaic cards */
+
+.kpiCard:nth-child(2) {
+  background: linear-gradient(135deg, #ffffff 0%, #e9f2ff 100%);
+}
+
+.kpiCard:nth-child(3) {
+  background: linear-gradient(135deg, #ffffff 0%, #e6f6ef 100%);
+}
+
+.kpiCard:nth-child(4) {
+  background: linear-gradient(135deg, #ffffff 0%, #eeeafa 100%);
+}
+
+.primaryKpi,
+.kpiCard.primaryKpi:nth-child(n) {
   border-color: #254f79;
-  background: linear-gradient(120deg, #204c77, #102d4a);
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgb(60 140 230 / 38%) 0%, transparent 60%),
+    linear-gradient(120deg, #204c77, #102d4a);
   box-shadow:
     inset 0 1px 0 rgb(255 255 255 / 15%),
-    0 6px 14px -5px rgb(15 41 66 / 35%);
+    0 14px 28px -14px rgb(15 41 66 / 55%);
 }
 
 .kpiIcon {
   display: grid;
-  flex: 0 0 2.35rem;
-  width: 2.35rem;
-  height: 2.35rem;
+  flex: 0 0 2.45rem;
+  width: 2.45rem;
+  height: 2.45rem;
   place-items: center;
-  border: 1px solid #d1e0f4;
-  border-radius: 0.65rem;
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: 999px;
   background: var(--blue-soft);
   color: var(--blue);
+  box-shadow: 0 3px 8px -4px rgb(15 41 66 / 30%);
 }
 
 .primaryKpi .kpiIcon {
@@ -215,7 +246,7 @@
 }
 
 .kpiMetric dd {
-  margin: 0.25rem 0 0;
+  margin: 0.15rem 0 0;
   color: var(--navy);
   font-size: clamp(1.35rem, 2.1vw, 1.85rem);
   font-weight: 700;
@@ -231,58 +262,81 @@
   color: white;
 }
 
-/* Both rows use the same column widths. */
+/* Cards shared by every section */
 
-.geographyGrid,
-.salesMixGrid {
+.panel {
+  min-width: 0;
+  padding: var(--panel-padding);
+  box-shadow:
+    0 0 0 1px rgb(15 41 66 / 6%),
+    0 12px 28px -20px rgb(15 41 66 / 30%);
+}
+
+.panel h2 {
+  margin: 0 0 0.65rem;
+  color: var(--navy);
+  font-family: var(--font-title);
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+
+.panel h3 {
+  margin: 0.2rem 0 0.45rem;
+  color: var(--navy);
+  font-family: var(--font-title);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Map on the left; ranking and targets on the right */
+
+.geographyGrid {
   display: grid;
-  grid-template-columns: var(--panel-columns);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.7fr);
   align-items: stretch;
   gap: var(--gap);
   min-width: 0;
 }
 
+.geographyGrid > .panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.geographyGrid > .panel:first-child {
+  background:
+    radial-gradient(110% 60% at 20% 0%, #e4eeff 0%, transparent 70%),
+    linear-gradient(180deg, #f7faff 0%, #eef4fc 100%);
+}
+
 .storeColumn {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto;
+  align-content: start;
   gap: var(--gap);
   min-width: 0;
-}
-
-.panel {
-  padding: var(--panel-padding);
-  box-shadow: 0 2px 5px rgb(15 41 66 / 4%);
-}
-
-.panel h2 {
-  margin: 0 0 1rem;
-  color: var(--navy);
-  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
-  line-height: 1.3;
-  letter-spacing: -0.025em;
-}
-
-.geographyGrid > .panel,
-.salesMixGrid > .panel {
-  display: flex;
-  flex-direction: column;
 }
 
 /* Department map */
 
 .salesMap {
   display: block;
+  flex: none;
   width: 100%;
-  height: clamp(15rem, 26vw, 22rem);
-  margin-block: auto;
+  height: clamp(10rem, 13vw, 12rem);
+  min-height: 0;
+  margin: 0 auto;
 }
 
 .mapLegend {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 0.85rem;
-  margin: 0.85rem 0 0.6rem;
+  gap: 0.25rem 0.65rem;
+  margin: 0.45rem 0;
   color: var(--muted);
   font-size: 0.85rem;
   line-height: 1.45;
@@ -299,7 +353,7 @@
   width: 0.75rem;
   height: 0.75rem;
   border: 1px solid rgb(15 41 66 / 12%);
-  border-radius: 0.2rem;
+  border-radius: 999px;
 }
 
 .mapValues,
@@ -314,7 +368,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem 1.1rem;
-  padding-top: 0.65rem;
+  padding-top: 0.35rem;
   border-top: 1px solid var(--border);
 }
 
@@ -323,6 +377,7 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0.15rem 0.45rem;
+  padding-block: 0.15rem;
   font-size: 0.9rem;
 }
 
@@ -334,10 +389,11 @@
 }
 
 .mapSource {
-  margin: 0.65rem 0 0;
+  margin: 0.4rem 0 0;
+  line-height: 1.35;
 }
 
-/* Store ranking and payments */
+/* Tables */
 
 .tableScroll {
   min-width: 0;
@@ -356,8 +412,9 @@
 .rankingTable td,
 .paymentTable th,
 .paymentTable td {
-  padding: 0.68rem 0.55rem;
+  padding: 0.46rem 0.55rem;
   border-bottom: 1px solid var(--border);
+  line-height: 1.35;
   text-align: left;
   vertical-align: middle;
 }
@@ -368,6 +425,16 @@
   color: #36516c;
   font-size: 0.85rem;
   font-weight: 650;
+}
+
+.rankingTable thead th:first-child,
+.paymentTable thead th:first-child {
+  border-top-left-radius: 0.6rem;
+}
+
+.rankingTable thead th:last-child,
+.paymentTable thead th:last-child {
+  border-top-right-radius: 0.6rem;
 }
 
 .rankingTable tbody th {
@@ -389,8 +456,8 @@
 }
 
 .departmentLink {
-  min-height: 1.8rem;
-  padding: 0.15rem 0;
+  min-height: 1.5rem;
+  padding: 0.1rem 0;
   border: 0;
   background: transparent;
   color: var(--blue-dark);
@@ -406,41 +473,48 @@
   text-decoration-color: currentColor;
 }
 
-/* Monthly targets */
+/* Monthly targets use the width under the ranking */
 
 .panelNote {
-  margin: -0.35rem 0 1rem;
+  margin: -0.2rem 0 0.6rem;
   color: var(--muted);
   font-size: 0.9rem;
 }
 
 .targetList {
   display: grid;
-  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+  gap: 0.7rem 1rem;
 }
 
-.targetList > li + li {
-  padding-top: 0.8rem;
-  border-top: 1px solid var(--border);
+.targetList > li {
+  min-width: 0;
+  padding: 0;
+  border: 0;
 }
 
 .targetHeading {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.35rem;
+}
+
+.targetHeading > :last-child {
+  font-weight: 700;
 }
 
 .targetDetail {
-  margin: 0.3rem 0 0.5rem;
+  margin: 0.25rem 0 0.4rem;
   color: var(--muted);
   font-size: 0.85rem;
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .targetTrack,
 .channelTrack {
-  height: 0.6rem;
+  height: 0.5rem;
   overflow: hidden;
   border-radius: 1rem;
   background: var(--rail);
@@ -451,20 +525,46 @@
 .channelBar {
   height: 100%;
   border-radius: inherit;
-  background: var(--blue);
+  background: linear-gradient(90deg, #3b82f0, var(--blue));
 }
 
 .targetReached {
-  background: #163f69;
+  background: linear-gradient(90deg, #1f5688, #163f69);
 }
 
-/* Sales channels */
+/* Channels and payments share a row.
+   This grid is also used by the category and brand tables. */
+
+.salesMixGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--gap);
+  min-width: 0;
+}
+
+.dashboard > .salesMixGrid > .panel:nth-child(1) {
+  background:
+    radial-gradient(110% 60% at 0% 0%, #e2f5ec 0%, transparent 70%),
+    linear-gradient(180deg, #f8fcfa 0%, #eef7f3 100%);
+}
+
+.dashboard > .salesMixGrid > .panel:nth-child(2) {
+  background:
+    radial-gradient(110% 60% at 100% 0%, #ebe8fa 0%, transparent 70%),
+    linear-gradient(180deg, #faf9ff 0%, #f1effb 100%);
+}
+
+.salesMixGrid > .panel {
+  display: flex;
+  flex-direction: column;
+}
 
 .channelList {
   display: grid;
-  flex: 1;
-  align-content: space-between;
-  gap: 1.1rem;
+  flex: none;
+  align-content: start;
+  gap: 0.75rem;
 }
 
 .channelLabel {
@@ -472,14 +572,42 @@
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.2rem 0.65rem;
-  margin-bottom: 0.45rem;
+  gap: 0.15rem 0.65rem;
+  margin-bottom: 0.25rem;
   font-size: 0.95rem;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .channelLabel span:last-child {
   color: var(--muted);
+}
+
+/* Product share sits beside the title when space allows */
+
+.panel:has(> :global(#products-heading)) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 1rem;
+}
+
+.panel:has(> :global(#products-heading)) > .salesMixGrid {
+  flex-basis: 100%;
+}
+
+/* Day/hour matrix and open stores share a row on desktop.
+   Wrap SalesByTime and OpenStores in <div className={styles.detailGrid}> */
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--gap);
+  min-width: 0;
+}
+
+.detailGrid > * {
+  min-width: 0;
 }
 
 .footer {
@@ -488,6 +616,12 @@
 
 /* Tablet */
 
+@media (max-width: 1100px) {
+  .detailGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 1050px) {
   .kpiGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -495,21 +629,31 @@
 }
 
 @media (max-width: 900px) {
-  .geographyGrid,
-  .salesMixGrid {
+  .geographyGrid {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .storeColumn {
-    grid-template-rows: auto auto;
-  }
-
-  .salesMap {
-    height: clamp(14rem, 40vw, 19rem);
+  .geographyGrid > .panel .salesMap {
+    height: 12rem;
   }
 }
 
 /* Mobile */
+
+@media (max-width: 700px) {
+  .salesMixGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .targetList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .targetList > li + li {
+    padding-top: 0.55rem;
+    border-top: 1px solid var(--border);
+  }
+}
 
 @media (max-width: 600px) {
   .dashboard {
@@ -558,7 +702,6 @@
   .kpiIcon {
     width: 1.85rem;
     height: 1.85rem;
-    border-radius: 0.45rem;
   }
 
   .kpiIcon svg {
