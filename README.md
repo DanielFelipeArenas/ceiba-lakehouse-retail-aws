@@ -31,6 +31,9 @@ Abre la dirección que aparece en la terminal, normalmente `http://localhost:300
 | Canales y medios de pago | Ventas por canal y distribución del monto pagado por medio de pago. |
 | Cumplimiento de metas | Ventas de cada tienda frente a su meta provisional de junio de 2026. |
 | Mapa por departamento | Distribución geográfica de las ventas y montos de los departamentos seleccionados. |
+| Productos | Participación de marca propia y ventas desglosadas por categoría y por marca. |
+| Ventas por día y hora | Ventas acumuladas por día de la semana y hora, con filtros de tienda y tipo de día. |
+| Tiendas abiertas | Cantidad y estado de las tiendas para una fecha y hora de Colombia, con el horario de cada tienda. |
 
 ## Prueba rápida
 
@@ -38,6 +41,6 @@ Selecciona **Boyacá**. Las ventas netas deben mostrar **$13.000.000** y el rank
 
 ## Desarrollo y diseño
 
-El tablero está construido con Next.js, React, JavaScript y CSS Modules. La página principal se encuentra en `app/page.js` y sus estilos en `app/page.module.css`.
+El tablero está construido con Next.js, React, JavaScript y CSS Modules. La [página principal](dashboard/app/page.js) reúne las ocho vistas y controla el filtro por departamento. Los [estilos del tablero](dashboard/app/page.module.css) definen su distribución visual.
 
-- [Bitácora de desarrollo por fecha](docs/bitacora_desarrollo_ceiba.md)
+- [Bitácora de desarrollo por fecha](docs/bitacora_desarrollo_ceiba.md) 

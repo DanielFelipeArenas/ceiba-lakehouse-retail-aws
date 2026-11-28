@@ -98,10 +98,31 @@ Con el prototipo abierto, seleccionen cada opción del filtro **Departamento** y
 | Boyacá | $13.000.000 | 260 | $50.000 | 2,4 | Tunja |
 | Santander | $10.000.000 | 200 | $50.000 | 2,4 | Bucaramanga |
 
+## 27–28 de noviembre de 2026 · Tres vistas nuevas y ajuste del diseño
+
+Completé las tres vistas que estaban pendientes. Con este avance, el tablero reúne ocho vistas con datos de ejemplo.
+
+### 6. Productos
+
+Incorporé la participación de marca propia y dos tablas de ventas: una por categoría y otra por marca. Al seleccionar un departamento, la gerencia puede consultar qué categorías y marcas concentran las ventas de sus tiendas.
+
+### 7. Ventas por día y hora
+
+Agregué una matriz que cruza los días de la semana con las horas disponibles en los datos de ejemplo. Cada celda suma las ventas del período para esa combinación. Por ejemplo, «Martes · 17:00» reúne las ventas registradas a esa hora en los martes del mes.
+
+La vista permite filtrar por tienda y tipo de día. El color más oscuro identifica el mayor valor acumulado de la selección y el guion indica una combinación sin datos.
+
+### 8. Tiendas abiertas
+
+Incorporé una consulta por fecha y hora de Colombia. La vista muestra cuántas tiendas de la selección están abiertas, el horario que corresponde a cada una ese día y su estado a la hora consultada. Los horarios son de ejemplo.
+
+### Diseño e integración
+
+Ajusté la distribución y el espaciado de las secciones para facilitar la comparación de cifras y la lectura de las tablas. Conservé la identidad visual de Ceiba, el filtro por departamento y el énfasis en ventas netas.
+
+Las ocho vistas funcionan con datos locales de ejemplo. El siguiente paso de integración es contrastar los campos y cálculos del frontend con una respuesta de prueba de la API.
+
 ### Próximos pasos
 
-- [ ] Recargar el tablero y confirmar si se resolvió el aviso del mapa.
-- [ ] Repetir las tres pruebas del filtro con la nueva distribución y revisar la vista en celular.
 - [ ] Revisar el contrato de la API con Aura y validar los cálculos con una respuesta de ejemplo acordada.
-- [ ] Desarrollar las tres vistas pendientes: productos, ventas por día y hora, y tiendas abiertas.
 - [ ] Subir a `Viviana_branch` los cambios de esta jornada y publicar una versión de prueba para el equipo.
